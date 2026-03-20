@@ -1,15 +1,27 @@
 const Navbar = () => {
+	const links = [
+		{ label: "Home", url: "/" },
+		{ label: "Topics", url: "#topics" },
+		{ label: "Featured Post", url: "#featured" },
+		{ label: "Recent Post", url: "#recent" },
+		{ label: "About", url: "./about" },
+		{ label: "Contact", url: "./contact" },
+	];
+
 	return (
-		<>
+		<div className="container">
+			<a href="/" className="logo">
+				<img
+					src="./assets/images/logo.svg"
+					alt="Logo"
+					width="119"
+					height="37"
+				/>
+			</a>
 			<nav className="navbar" data-navbar>
 				<div className="navbar-top">
-					<a href="#" className="logo">
-						<img
-							src="./assets/images/logo.svg"
-							alt="LearnWish Logo"
-							width="119"
-							height="37"
-						/>
+					<a href="/" className="logo">
+						<img src="/logo.svg" alt="LearnWish Logo" width="119" height="37" />
 					</a>
 
 					<button
@@ -22,48 +34,17 @@ const Navbar = () => {
 				</div>
 
 				<ul className="navbar-list">
-					<li>
-						<a href="#home" className="navbar-link hover-1" data-nav-toggler>
-							Home
-						</a>
-					</li>
-					<li>
-						<a href="#topics" className="navbar-link hover-1" data-nav-toggler>
-							Topics
-						</a>
-					</li>
-					<li>
-						<a
-							href="#featured"
-							className="navbar-link hover-1"
-							data-nav-toggler
-						>
-							Featured Post
-						</a>
-					</li>
-					<li>
-						<a href="#recent" className="navbar-link hover-1" data-nav-toggler>
-							Recent Post
-						</a>
-					</li>
-					<li>
-						<a
-							href="./about-us.html"
-							className="navbar-link hover-1"
-							data-nav-toggler
-						>
-							About Us
-						</a>
-					</li>
-					<li>
-						<a
-							href="./contact-us.html"
-							className="navbar-link hover-1"
-							data-nav-toggler
-						>
-							Contact Us
-						</a>
-					</li>
+					{links.map((link, index) => (
+						<li key={index}>
+							<a
+								href={link.url}
+								className="navbar-link hover-1"
+								data-nav-toggler
+							>
+								{link.label}
+							</a>
+						</li>
+					))}
 				</ul>
 
 				<div className="navbar-bottom">
@@ -77,7 +58,7 @@ const Navbar = () => {
 						/>
 
 						<div>
-							<p className="card-title">Hi, I'm Nowshen Khan!</p>
+							<p className="card-title">Hi, I&#39;m Nowshen Khan!</p>
 							<p className="card-subtitle">
 								This simple website base on educational blog, article for
 								learners or education hunters.
@@ -148,7 +129,14 @@ const Navbar = () => {
 					</a>
 				</p>
 			</nav>
-		</>
+			<a href="#name" className="btn btn-primary">
+				Subscribe
+			</a>
+
+			<button className="nav-open-btn" aria-label="open menu" data-nav-toggler>
+				<ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+			</button>
+		</div>
 	);
 };
 
